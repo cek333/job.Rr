@@ -1,0 +1,222 @@
+/* Body ============================= */
+body {
+  height: 100%;
+  font-family: 'Oswald', sans-serif;
+}
+/* Header ================================= */
+header {
+  height: 5rem;
+  background:
+  radial-gradient(circle, transparent 10%, slategray 20%,
+    slategray 80%, transparent 80%, transparent),
+  radial-gradient(circle, transparent 10%, slategray 20%,
+    slategray 80%, transparent 80%, transparent) 50px 50px,
+  linear-gradient(lightslategray 8px, transparent 8px) 0 -4px,
+  linear-gradient(90deg, lightslategray 8px, transparent 8px) -4px 0;
+background-color: slategray;
+background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+}
+.title {
+  padding-top: 10px;
+  margin-left: 2rem;
+  color: navy;
+  font-family: 'Anton', sans-serif;
+  font-size: 3rem;
+}
+.titleBtn {
+  width: 300px;
+  background:
+  radial-gradient(circle, transparent 10%, slategray 20%,
+    slategray 80%, transparent 80%, transparent),
+  radial-gradient(circle, transparent 10%, slategray 20%,
+    slategray 80%, transparent 80%, transparent) 50px 50px,
+  linear-gradient(lightslategray 8px, transparent 8px) 0 -4px,
+  linear-gradient(90deg, lightslategray 8px, transparent 8px) -4px 0;
+background-color: slategray;
+background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+.titleBtn:visited {
+  outline: none;
+  border: none;
+}
+/* Main ========================================================== */
+#searchBar {
+  width: 100%;
+  height: 50px;
+}
+/* Search Bar ======================================================= */
+article {
+  background-color: white;
+}
+#searchBox {
+  position: relative;
+  margin-left: 20%;
+  margin-top: 3rem;
+  width: 100%;
+  height: 40vh;
+}
+.search {
+  display: grid;
+  grid-template-columns: 1fr,100px;
+  margin: 0%;
+}
+#searchBtn {
+  grid-column: 2;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-color: navy;
+}
+/* Sidebar ======================================================= */
+.sidebar {
+  margin-top: 30px;
+  text-align: center;
+  background-color: powderblue;
+  overflow: auto;
+  white-space: nowrap;
+}
+.sidebarCo {
+  display: inline-block;
+  padding-top: 0;
+  text-align: center;
+  padding: 2rem;
+}
+h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+}
+#recentSearch {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* Results =====================================================*/
+#results {
+  display: none;
+  background-color: rgb(135, 145, 155);
+  border-radius: 30px;
+  max-width: 800px;
+  width: 80%;
+  height: 650px;
+  left: -30px;
+  text-align: center;
+}
+#message {
+  text-align: center;
+  margin-top: 10px;
+}
+#jobResults {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 2px;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  height: 275px;
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: auto;
+  white-space: nowrap;
+}
+#bookResults {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 2px;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 275px;
+  background-color: white;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  overflow: auto;
+  white-space: nowrap;
+}
+ #job-options {
+   display: inline-block;
+  background-color: white;
+   padding-top: 40px;
+   width: 200px;
+   height: 150px;
+   text-align: center;
+ }
+#book-rr{
+  display: inline-block;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  text-align: center;
+}
+
+
+/* Footer ========================================================= */
+footer {
+  text-align: center;
+  height: 3rem;
+  background:
+  radial-gradient(circle, transparent 10%, slategray 20%,
+    slategray 80%, transparent 80%, transparent),
+  radial-gradient(circle, transparent 10%, slategray 20%,
+    slategray 80%, transparent 80%, transparent) 50px 50px,
+  linear-gradient(lightslategray 8px, transparent 8px) 0 -4px,
+  linear-gradient(90deg, lightslategray 8px, transparent 8px) -4px 0;
+background-color: slategray;
+background-size: 100px 100px, 100px 100px, 50px 50px, 50px 50px;
+  font-weight: bold;
+  color: navy;
+}
+/* Media Queries ================================================ */
+@media screen and (min-width: 800px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+  }
+  #searchBox {
+    grid-column: 1;
+  }
+  #searchBtn {
+    width: 100px;
+  }
+  article {
+    grid-column: 1;
+    height: 100vh;
+  }
+  .sidebar {
+  display: grid;
+  margin-top: 0;
+  grid-column: 2;
+  width: 300px;
+  height: 100vh;
+  overflow: hidden;
+  white-space: pre-wrap;
+  }
+  .sidebarCo {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 0;
+  }
+  #recentSearch {
+    width: 200px;
+    height: 50px;
+    margin-left: 12%;
+  }
+  #results {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: none;
+  }
+}
+
+button {
+  width: 180px;
+}
