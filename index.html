@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>job.R</title>
+    <title>job.Rr</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
@@ -18,14 +18,8 @@
     </header>
     <main>
         <article id="article">
-            <div id=searchBox class="container">
-                <div class="search">
-                    <input id="searchBar" class="form-control mr-sm-2" type="search" placeholder="How can I help?" aria-label="Search">
-                    <button id="searchBtn" type="button" class="btn btn-info">Let's Go!</button>
-                </div>
-            </div>
             <div id="results" class="container">
-                <div id="message" class="alert alert-secondary" role="alert">
+                <div id="message" class="success" role="alert">
                 </div>        
                 <div id="jobResults">
                     <div id="job-options">
@@ -36,18 +30,22 @@
 
                 <div id="bookResults" class="bookResults"> 
                         <div id="book-rr"></div>
-                        </div>
-                    </div>
                 </div>
             
-         </div>
+            </div>
+            <div id=searchBox>
+                <div class="search">
+                    <input id="searchBar" class="form-control mr-sm-2" type="search" placeholder="How can I help?" aria-label="Search">
+                    <button id="searchBtn" type="button" class="btn btn-info">Let's Go!</button>
+                </div>
+            </div>
         </article>
 
 
         <div class="sidebar">
             <!-- <div class="recentSearch"> -->
                 <h2>Recent Search:</h2>
-                <!-- <button id="clearAll" type="button" class="btn btn-warning" onClick="clearAll()">Clear All</button> -->
+                <button id="clearAll" type="button" class="btn btn-warning mb-2" onClick="clearAll()">Clear All</button>
             <!-- </div> -->
             <div class="sidebarCo">
                                    

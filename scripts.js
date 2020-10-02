@@ -15,8 +15,8 @@ searchBtn.addEventListener('click', function(){
    console.log("hi there")
    if (firstSearch) {
     searchBox.style.left = "50%"
-    searchBox.style.top = "-110px"
-    searchBox.style.height = "20px"
+    searchBox.style.top = "-780px"
+    // searchBox.style.height = "20px"
     results.style.display = "grid"
     firstSearch = false;
   }
@@ -33,8 +33,8 @@ function displayMessage(type, message) {
 
 function loadSearchTerms() {
    searchTerms = localStorage.search ? JSON.parse(localStorage.search) : [];
-   document.querySelector("#search-list").innerHTML+=`
-      <button type="button" class="btn btn-warning" onClick="clearAll()">Clear All</button>`
+   //  document.querySelector("#search-list").innerHTML+=`
+   //     <button type="button" class="btn btn-warning" onClick="clearAll()">Clear All</button>`
    for(let i=0; i < searchTerms.length; i++) {
     document.querySelector("#search-list").innerHTML+=`
               <button class="btn btn-info mb-2" onclick="sideBarSearch('${searchTerms[i]}')">${searchTerms[i]}</button>`
@@ -44,9 +44,8 @@ function loadSearchTerms() {
 function sideBarSearch( search ) {
   if (firstSearch) {
     searchBox.style.left = "50%"
-    searchBox.style.top = "-110px"
-    searchBox.style.height = "20px"
-    searchBox.style.marginLeft = "0px"
+    searchBox.style.top = "-780px"
+    // searchBox.style.height = "20px"
     results.style.display = "grid"
     firstSearch = false;
   }
@@ -57,7 +56,6 @@ function sideBarSearch( search ) {
 document.querySelector("#searchBtn").addEventListener("click", function(event) {
     event.preventDefault();
     let search = searchInput.value.trim();
-    searchTerms.push(search);
     
         console.log(search);
     
@@ -65,14 +63,16 @@ document.querySelector("#searchBtn").addEventListener("click", function(event) {
             displayMessage("error", "Search cannot be blank");
         } else {
             displayMessage("success", "Search successful");
-        
-            localStorage.setItem("search", JSON.stringify(searchTerms));
-            
-            //var lastSearch = JSON.parse(localStorage.getItem("search"));
-            //searchRecommendationSpan.textContent = lastSearch.search;
-            document.querySelector("#search-list").innerHTML+=`
-            <button class="btn btn-info mb-2" onclick="sideBarSearch('${search}')">${search}</button>`
-
+            if (searchTerms.indexOf(search)<0) {
+              // new search term
+              searchTerms.push(search);
+              localStorage.setItem("search", JSON.stringify(searchTerms));
+              
+              //var lastSearch = JSON.parse(localStorage.getItem("search"));
+              //searchRecommendationSpan.textContent = lastSearch.search;
+              document.querySelector("#search-list").innerHTML+=`
+              <button class="btn btn-info mb-2" onclick="sideBarSearch('${search}')">${search}</button>`
+            }
             displayJobs(search);
             displayBooks(search);
         }
@@ -104,7 +104,7 @@ function displayJobs( userInput ) {
         $("#job-options").append(
           `<div id="job-options">
               <h5 class="jobTitle text-wrap">${jobTitle}</h5>
-              <a href="${jobLink}" class="card-text text-wrap">Link to Posting</a>
+              <a href="${jobLink}" target="_blank" class="card-text text-wrap">Link to Posting</a>
             </div>`
         
         )
@@ -147,7 +147,7 @@ function displayJobs( userInput ) {
          <div id="book-rr">
          <h5 class="bookTitle text-wrap">${title}</h5>
          <p class="authorName text-wrap">${authors}</p>
-         <img src="${imgUrl}" class="img-thumbnail" alt="Book Image"></div>`); 
+         <a href="${bookUrl}" target="_blank"><img src="${imgUrl}" class="img-thumbnail" alt="Book Image"></a></div>`); 
        } 
      }
    });
