@@ -8,7 +8,7 @@ var searchBox = document.getElementById("searchBox")
 var header = document.getElementById("header")
 var results = document.getElementById("results")
 var msgDiv = document.querySelector("#message")
-var sideBar = document.querySelector("sidebar")
+//var sideBar = document.querySelector("sidebar")
 var searchTerms;
 var firstSearch = true;
 
@@ -19,7 +19,7 @@ searchBtn.addEventListener('click', function(){
     searchBox.style.top = "-785px"
     searchBox.style.height = "20px"
     results.style.display = "grid"
-    sideBar.style.marginTop = "0px"
+    //sideBar.style.marginTop = "0px"
     firstSearch = false;
   }
 });
