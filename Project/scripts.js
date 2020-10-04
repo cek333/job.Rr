@@ -112,7 +112,7 @@ function displayJobs( userInput ) {
         })
 }
 
-// Book Results Function
+// Book Results Function (Open Library)
  function displayBooks( subject ) {
    let bookURL = `https://openlibrary.org/subjects/${subject}.json?published_in=2000-2020&limit=20`;
    $.ajax({
@@ -152,6 +152,42 @@ function displayJobs( userInput ) {
      }
    });
  }
+
+/* 
+// Book Results Function (Goodreads)
+function displayBooks( subject ) {
+  // https://www.goodreads.com/topic/show/17893514-cors-access-control-allow-origin (CORS issue thread)
+  let bookURL = `http://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?q=${subject}&key=t4IevAd68BKH09EjfX3SGw`;
+  $.ajax({
+    url: bookURL,
+    method: "GET"
+  }).then(function(response) {
+    let rDbg = response;
+    // console.log(rDbg);
+    // clear book results
+    $('#book-rr').text("");
+    let works = $(response).find('search').find('results').find('work');
+    for (let idx=0; idx < works.length; idx++) {
+      let oneWork = $(works[idx]);
+      let id = oneWork.find('best_book').children('id').text();
+      let title = oneWork.find('best_book').find('title').text();
+      if (title.length > 75) continue; // skip long titles
+      // console.log(`[displayBooks] title=${title} len:${title.length}`);
+      let authors = oneWork.find('best_book').find('author').find('name').text();
+      let imgUrl = oneWork.find('best_book').find('image_url').text();
+      let bookUrl = `https://www.goodreads.com/book/show/${id}`;
+      // console.log(`[displayBooks] id=${id} title=${title} author=${author} img=${imgUrl}`);
+      // Add to html. 
+      $('#book-rr').append(`
+      <div id="book-rr">
+      <h5 class="bookTitle text-wrap">${title}</h5>
+      <p class="authorName text-wrap">${authors}</p>
+      <a href="${bookUrl}" target="_blank"><img src="${imgUrl}" class="img-thumbnail" alt="Book Image"></a></div>`); 
+    }
+    displayMessage("success", "Search successful. Book results from Goodreads.");
+  });
+}
+*/
 
  loadSearchTerms();
 
