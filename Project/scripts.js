@@ -157,7 +157,10 @@ function displayJobs( userInput ) {
 // Book Results Function (Goodreads)
 function displayBooks( subject ) {
   // https://www.goodreads.com/topic/show/17893514-cors-access-control-allow-origin (CORS issue thread)
-  let bookURL = `http://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml?q=${subject}&key=t4IevAd68BKH09EjfX3SGw`;
+  // Note: subject can't have spaces
+  let goodreadsUrl = `https://www.goodreads.com/search/index.xml?q=${subject}&key=t4IevAd68BKH09EjfX3SGw`;
+  let bookURL = `https://repos.codehot.tech/cors_proxy.php?url=${encodeURIComponent(goodreadsUrl)}`;
+  console.log(`[displayBooks] url=${bookURL}`);
   $.ajax({
     url: bookURL,
     method: "GET"
@@ -166,15 +169,14 @@ function displayBooks( subject ) {
     // console.log(rDbg);
     // clear book results
     $('#book-rr').text("");
-    let works = $(response).find('search').find('results').find('work');
+    let works = response.search.results.work;
     for (let idx=0; idx < works.length; idx++) {
-      let oneWork = $(works[idx]);
-      let id = oneWork.find('best_book').children('id').text();
-      let title = oneWork.find('best_book').find('title').text();
+      let id = works[idx].best_book.id;
+      let title = works[idx].best_book.title;
       if (title.length > 75) continue; // skip long titles
       // console.log(`[displayBooks] title=${title} len:${title.length}`);
-      let authors = oneWork.find('best_book').find('author').find('name').text();
-      let imgUrl = oneWork.find('best_book').find('image_url').text();
+      let authors = works[idx].best_book.author.name;
+      let imgUrl = works[idx].best_book.image_url;
       let bookUrl = `https://www.goodreads.com/book/show/${id}`;
       // console.log(`[displayBooks] id=${id} title=${title} author=${author} img=${imgUrl}`);
       // Add to html. 
