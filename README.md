@@ -13,8 +13,6 @@ Event listener is used to create an event handler to a specific function. An add
 document.querySelector("#searchBtn").addEventListener("click", function(event) {
     event.preventDefault();
     let search = searchInput.value.trim();
-    
-        console.log(search);
 ```
 
  
@@ -22,38 +20,29 @@ An Application Programming Interface (API) is a software that allows two applica
 ```
 // Jobs Results Function
 function displayJobs( userInput ) {
-
-    var apiID = "f79398ab";
-    var apiKey = "6f3c4d62b7cf24c28993c2b466b44ea6";
-
     queryURL = "https://api.adzuna.com/v1/api/jobs/ca/search/1?app_id="+ (apiID) + "&app_key="+ (apiKey) + "&results_per_page=5&what=" + userInput + "&content-type=application/json"
 ```
  
 Ajax allows a web page to update by exchanging data with a webserver. Within this functional scope a value of let works similar to var, however variables declared by let are limited in a scope in which it used. Within this functional scope and that of the book result functional scope, a for loop is used to cycle through an array of job listings and related novels. 
 ```
 $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function (result){
-          console.log(result);
-          $("#job-options").text("");
-          for(i=0; i<result.results.length; i++){
-        //   document.querySelector("#jobtitle").innerHTML += result.results[i].title
-        //   console.log(result.results[i].title)
-        //   document.querySelector("#joblink").innerHTML += result.results[i].redirect_url
-          //Job title
-        let jobTitle = result.results[i].title;
-        //Job posting
-        let jobLink = result.results[i].redirect_url;
-        $("#job-options").append(
-          `<div id="job-options">
-              <h5 class="jobTitle text-wrap">${jobTitle}</h5>
-              <a href="${jobLink}" target="_blank" class="card-text text-wrap">Link to Posting</a>
-            </div>`
-        
-        )
-        }
-        })
+    url: queryURL,
+    method: "GET"
+  }).then(function (result){
+    $("#job-options").text("");
+    for(i=0; i<result.results.length; i++){
+      //Job title
+      let jobTitle = result.results[i].title;
+      //Job posting
+      let jobLink = result.results[i].redirect_url;
+      $("#job-options").append(
+        `<div id="job-options">
+          <h5 class="jobTitle text-wrap">${jobTitle}</h5>
+          <a href="${jobLink}" target="_blank" class="card-text text-wrap">Link to Posting</a>
+        </div>`
+      )
+    }
+  })
  ``` 
 
 The sidebar on the right-hand side of the webpage contains recent searches which are saved through the local storage, even following the refresh of the page.
