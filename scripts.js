@@ -8,6 +8,7 @@ var searchBox = document.getElementById("searchBox")
 var header = document.getElementById("header")
 var results = document.getElementById("results")
 var msgDiv = document.querySelector("#message")
+//var sideBar = document.querySelector("sidebar")
 var searchTerms;
 var firstSearch = true;
 
@@ -15,9 +16,10 @@ searchBtn.addEventListener('click', function(){
    console.log("hi there")
    if (firstSearch) {
     searchBox.style.left = "50%"
-    searchBox.style.top = "-780px"
-    // searchBox.style.height = "20px"
+    searchBox.style.top = "-785px"
+    searchBox.style.height = "20px"
     results.style.display = "grid"
+    //sideBar.style.marginTop = "0px"
     firstSearch = false;
   }
 });
@@ -103,16 +105,14 @@ function displayJobs( userInput ) {
         let jobLink = result.results[i].redirect_url;
         $("#job-options").append(
           `<div id="job-options">
-              <h5 class="jobTitle text-wrap">${jobTitle}</h5>
-              <a href="${jobLink}" target="_blank" class="card-text text-wrap">Link to Posting</a>
+              <h5 class="jobTitle text-wrap"><a href="${jobLink}" target="_blank" class="card-text text-wrap">${jobTitle}</a></h5>
             </div>`
-        
         )
         }
         })
 }
 
-// Book Results Function
+// Book Results Function (Open Library)
  function displayBooks( subject ) {
    let bookURL = `https://openlibrary.org/subjects/${subject}.json?published_in=2000-2020&limit=20`;
    $.ajax({
@@ -152,6 +152,44 @@ function displayJobs( userInput ) {
      }
    });
  }
+
+/* 
+// Book Results Function (Goodreads)
+function displayBooks( subject ) {
+  // https://www.goodreads.com/topic/show/17893514-cors-access-control-allow-origin (CORS issue thread)
+  // Note: subject can't have spaces
+  let goodreadsUrl = `https://www.goodreads.com/search/index.xml?q=${subject}&key=t4IevAd68BKH09EjfX3SGw`;
+  let bookURL = `https://repos.codehot.tech/cors_proxy.php?url=${encodeURIComponent(goodreadsUrl)}`;
+  console.log(`[displayBooks] url=${bookURL}`);
+  $.ajax({
+    url: bookURL,
+    method: "GET"
+  }).then(function(response) {
+    let rDbg = response;
+    // console.log(rDbg);
+    // clear book results
+    $('#book-rr').text("");
+    let works = response.search.results.work;
+    for (let idx=0; idx < works.length; idx++) {
+      let id = works[idx].best_book.id;
+      let title = works[idx].best_book.title;
+      if (title.length > 75) continue; // skip long titles
+      // console.log(`[displayBooks] title=${title} len:${title.length}`);
+      let authors = works[idx].best_book.author.name;
+      let imgUrl = works[idx].best_book.image_url;
+      let bookUrl = `https://www.goodreads.com/book/show/${id}`;
+      // console.log(`[displayBooks] id=${id} title=${title} author=${author} img=${imgUrl}`);
+      // Add to html. 
+      $('#book-rr').append(`
+      <div id="book-rr">
+      <h5 class="bookTitle text-wrap">${title}</h5>
+      <p class="authorName text-wrap">${authors}</p>
+      <a href="${bookUrl}" target="_blank"><img src="${imgUrl}" class="img-thumbnail" alt="Book Image"></a></div>`); 
+    }
+    displayMessage("success", "Search successful. Book results from Goodreads.");
+  });
+}
+*/
 
  loadSearchTerms();
 
