@@ -1,8 +1,8 @@
 
-##Cecil King
-##Brooklyn Minor
-##Victor Sherman
-##Leah O’Gorman
+Cecil King
+Brooklyn Minor
+Victor Sherman
+Leah O’Gorman
 # Project 1
 The purpose of this project was to create a functional website using our knowledge pertaining to the criteria that has been taught thus far in the program. For this project, we as a group decided to fabricate a website that would search job-listings as well as related novels.
 CSS describes how the HTML elements should be displayed; it is used to style an HTML file. The CSS properties are located in the style.css file.
