@@ -56,4 +56,4 @@ function clearAll(){
  }
  ```
 
-After the website is complete the files are pushed through GitBash in the repository; project 1.  
+After the website is complete the files are pushed through GitBash in the repository. You can view the project1 website, entitled job.Rr, [here](https://vicscherman.github.io/project1/).  
