@@ -25,6 +25,7 @@ $.ajax({
  ``` 
 The screenshot below shows the job listings and book recommendations as a result of searching for 'Javascript'. 
 ![job.Rr screenshot](assets/jobRr_small.png)
+
 The sidebar on the right-hand side of the webpage contains recent searches which are saved via local storage, and thus, will be presistent even following the refresh of the page. In order for the search to be cleared from the local storage a clear function is implemented into the JS file. 
 
 ## Technologies Used
