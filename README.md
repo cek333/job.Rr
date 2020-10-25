@@ -39,10 +39,10 @@ The sidebar on the right-hand side of the webpage contains recent searches which
 * localStorage
 
 ## Work Breakdown
-* **Victor Sherman** worked on the Adzuna Job API. 
-* **Cecil King** worked on Open Library API.
-* **Brooklyn Minor** worked on localStorage and getting the recent searches to appear as well as error messaging for invalid searches. 
-* **Leah O’Gorman** worked on the HTML, CSS, and Bootstrap.
+* [**Victor Sherman**](https://github.com/vicscherman) worked on the Adzuna Job API. 
+* [**Cecil King**](https://github.com/cek333) worked on Open Library API.
+* [**Brooklyn Minor**](https://github.com/brooklynminor) worked on localStorage and getting the recent searches to appear as well as error messaging for invalid searches. 
+* [**Leah O’Gorman**](https://github.com/leahogorman) worked on the HTML, CSS, and Bootstrap.
 
 ## Try It
 You can view the project [here](https://vicscherman.github.io/project1/).  
