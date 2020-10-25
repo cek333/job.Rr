@@ -1,29 +1,8 @@
 
-Cecil King
-Brooklyn Minor
-Victor Sherman
-Leah O’Gorman
-# Project 1
-The purpose of this project was to create a functional website using our knowledge pertaining to the criteria that has been taught thus far in the program. For this project, we as a group decided to fabricate a website that would search job-listings as well as related novels.
-CSS describes how the HTML elements should be displayed; it is used to style an HTML file. The CSS properties are located in the style.css file.
-Var statements create a variable that declares a value.
-The console log is used for a variety of purposes. Primarily for debugging a variable or/and function. However, it is also used for printing errors related to the web application. This can be accessed by right clicking and selecting inspect, from there you can manage console. 
-Event listener is used to create an event handler to a specific function. An add event listener is used to attach an event handler to a document. When a click function is utilized to run/start an event when a click function occurs. Query Selector is used to return the first child element that is in conjunction to a specified CSS.
-```
-document.querySelector("#searchBtn").addEventListener("click", function(event) {
-    event.preventDefault();
-    let search = searchInput.value.trim();
-```
 
- 
-An Application Programming Interface (API) is a software that allows two applications to be compatible. In this case, we used an API for the job search and an API for the related books. 
-```
-// Jobs Results Function
-function displayJobs( userInput ) {
-    queryURL = "https://api.adzuna.com/v1/api/jobs/ca/search/1?app_id="+ (apiID) + "&app_key="+ (apiKey) + "&results_per_page=5&what=" + userInput + "&content-type=application/json"
-```
- 
-Ajax allows a web page to update by exchanging data with a webserver. Within this functional scope a value of let works similar to var, however variables declared by let are limited in a scope in which it used. Within this functional scope and that of the book result functional scope, a for loop is used to cycle through an array of job listings and related novels. 
+# job.Rr
+The purpose of this project was to create a functional website using our knowledge pertaining to the criteria that has been taught thus far in the program. For this project, we as a group decided to fabricate a website that would search job listings as well as recommended readings. We used two APIs to get the job and book information; Adzuna for the job listings and the Open Library API for the books. JQuery's `.ajax()` function was used to fetch data from the APIs.
+
 ```
 $.ajax({
     url: queryURL,
@@ -44,16 +23,26 @@ $.ajax({
     }
   })
  ``` 
+The screenshot below shows the job listings and book recommendations as a result of searching for 'Javascript'. 
+![job.Rr screenshot](assets/jobRr_small.png)
+The sidebar on the right-hand side of the webpage contains recent searches which are saved via local storage, and thus, will be presistent even following the refresh of the page. In order for the search to be cleared from the local storage a clear function is implemented into the JS file. 
 
-The sidebar on the right-hand side of the webpage contains recent searches which are saved through the local storage, even following the refresh of the page.
+## Technologies Used
+* HTML
+* CSS
+* Bootstrap
+* fontawesome 
+* Javascript
+* jQuery 
+* Adzuna Job Search API 
+* Open Library API
+* localStorage
 
-In order for the search to be cleared from the local storage a clear function is implemented into the JS file. 
-```
-function clearAll(){
-   localStorage.clear();
-   document.querySelector("#search-list").innerHTML=""
-   searchTerms = []
- }
- ```
+## Work Breakdown
+* **Victor Sherman** worked on the Adzuna Job API. 
+* **Cecil King** worked on Open Library API.
+* **Brooklyn Minor** worked on localStorage and getting the recent searches to appear as well as error messaging for invalid searches. 
+* **Leah O’Gorman** worked on the HTML, CSS, and Bootstrap.
 
-After the website is complete the files are pushed through GitBash in the repository. You can view the project1 website, entitled job.Rr, [here](https://vicscherman.github.io/project1/).  
+## Try It
+You can view the project [here](https://vicscherman.github.io/project1/).  
